@@ -1,46 +1,28 @@
-FROM nvidia/cuda:11.7.1-devel-ubuntu22.04
+FROM nvidia/cuda:11.8.0-devel-ubuntu20.04
 
 ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=US
+ENV TZ=ES
 
-RUN apt-get -y update -qq && apt-get install -y --no-install-recommends \
-        build-essential \
-        ca-certificates \
-        clang \
-        gcc \
-        cmake \
-        htop \
-        curl \
-        git \
-        libomp-dev \
-        libsm6 \
-        libssl-dev \
-        libxrender-dev \
-        libxext-dev \
-        iproute2 \
-        python3.9 \
-        python3-dev \
-        python3-setuptools \
-        python3-pip \
-        vim \
-        ssh \
-        wget \
-        vim \
-        zip \
-    && \
-    rm -rf /var/lib/apt/lists/* && \
-    ln -s /usr/bin/python3.9 /usr/bin/python
-ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64"
+RUN apt-get -y update && apt-get install -y \
+						git \
+						python3 \
+						python3-dev \
+						python3-pip \
+						python3-tk \
+						vim \
+						ffmpeg \
+						libsm6 \
+						libxext6
 
-RUN pip install --upgrade cython \
-                          cloudpickle \
-                          gym[atari] \
-                          opencv-python \
-                          psutil \
-                          torch==1.11.0 \
-                          torchvision==0.12.0 \
-                          tqdm
+RUN ln -s /usr/bin/python3.8 /usr/bin/python
 
-RUN git clone -b master --recursive https://github.com/NVLabs/cule && \
-    cd cule && \
-    python setup.py install
+RUN pip install --upgrade pip
+RUN pip install torch \
+			cython \
+                	torchvision \
+			opencv-python \
+                	matplotlib \
+                	atari_py
+
+RUN git clone -b master --recursive https://github.com/jlaserna/cule
+RUN cd cule && python setup.py install

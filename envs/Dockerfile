@@ -10,6 +10,7 @@ RUN apt-get -y update && apt-get install -y \
 						python3 \
 						python3-dev \
 						python3-pip \
+						python3-tk \
 						vim \
 						ffmpeg \
 						libsm6 \
@@ -23,9 +24,8 @@ RUN pip install torch \
 			torchvision \
 			opencv-python \
 			matplotlib \
-			atari_py
-
-RUN apt-get install -y python3-tk
+			atari_py \
+			tqdm
 
 RUN python -m atari_py.import_roms /tmp/roms
 

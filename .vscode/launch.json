@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense para saber los atributos posibles.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos.
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Visualize",
+            "type": "python",
+            "request": "launch",
+            "program": "/cule/examples/visualize/animate.py",
+            "args": ["--env-name", "PongNoFrameskip-v4", "--use-cuda"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Visualize (debug)",
+            "type": "python",
+            "request": "launch",
+            "program": "/cule/examples/visualize/animate.py",
+            "args": ["--env-name", "PongNoFrameskip-v4", "--use-cuda", "--debug"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

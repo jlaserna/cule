@@ -12,7 +12,10 @@ import matplotlib.animation as animation
 import torch
 
 from torchcule.atari import Env, Rom
-from utils.openai.envs import create_vectorize_atari_env
+try:
+    from utils.openai.envs import create_vectorize_atari_env
+except:
+    print("[Warning]: Error loading \'utils.openai.envs\'")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='CuLE')

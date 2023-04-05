@@ -29,5 +29,5 @@ RUN pip install torch \
 
 RUN python -m atari_py.import_roms /tmp/roms
 
-RUN git clone -b master --recursive https://github.com/jlaserna/cule
+RUN git clone -b develop --recursive https://github.com/jlaserna/cule
 RUN cd cule && python setup.py install
